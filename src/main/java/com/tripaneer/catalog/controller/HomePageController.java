@@ -14,6 +14,6 @@ public class HomePageController {
 
     @GetMapping("/homepage")
     public HomePageResponse getHomePage() {
-        return homePageService.buildHomePage();
+        return homePageService.getHomePage();
     }
 }

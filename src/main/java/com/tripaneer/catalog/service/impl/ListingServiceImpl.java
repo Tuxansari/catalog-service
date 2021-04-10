@@ -1,10 +1,11 @@
 package com.tripaneer.catalog.service.impl;
 
 import com.tripaneer.catalog.dto.ListingDTO;
-import com.tripaneer.catalog.model.Listing;
+import com.tripaneer.catalog.domain.Listing;
 import com.tripaneer.catalog.repository.ListingRepository;
 import com.tripaneer.catalog.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,14 +19,22 @@ public class ListingServiceImpl implements ListingService {
     private ListingRepository listingRepository;
 
     @Override
-    public List<Listing> getListing(String destinationKey) {
+    public List<Listing> getListingByDestination(String destinationKey) {
         return new ArrayList<>(listingRepository
-                .findAllBySlug(destinationKey));
+                .findAllByDestinationKey(destinationKey));
     }
 
     @Override
-    public List<ListingDTO> getListingDTO(String destinationKey) {
-        return getListing(destinationKey).stream()
+    public List<ListingDTO> getListingDTOByCategory(String categoryKey) {
+        return listingRepository.findAllByCategoryKey(categoryKey)
+                .stream()
+                .map(this::convertToListingDTO)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ListingDTO> getListingDTOByDestination(String destinationKey) {
+        return getListingByDestination(destinationKey).stream()
                 .map(this::convertToListingDTO)
                 .collect(Collectors.toList());
     }

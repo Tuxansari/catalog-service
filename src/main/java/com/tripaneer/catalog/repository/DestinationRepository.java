@@ -1,7 +1,6 @@
 package com.tripaneer.catalog.repository;
 
-import com.tripaneer.catalog.model.Destination;
-import com.tripaneer.catalog.model.Listing;
+import com.tripaneer.catalog.domain.Destination;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 

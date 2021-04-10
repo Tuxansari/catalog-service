@@ -23,7 +23,7 @@ public class HomePageServiceImpl implements HomePageService {
     private DestinationService destinationService;
 
     @Override
-    public HomePageResponse buildHomePage() {
+    public HomePageResponse getHomePage() {
 
         List<CategoryDTO> topCategories = categoryService.getTopCategories();
         List<DestinationDTO> topDestinations = destinationService.getTopDestination();

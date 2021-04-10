@@ -10,8 +10,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class DestinationResponse {
+public class CategoryResponse {
     private List<ListingDTO> listings;
-    private List<DestinationDTO> subDestinations;
-    private List<CategoryDTO> categories;
+    private List<CategoryDTO> otherCategories;
 }

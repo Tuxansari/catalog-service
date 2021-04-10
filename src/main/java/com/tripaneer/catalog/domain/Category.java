@@ -1,20 +1,21 @@
-package com.tripaneer.catalog.model;
+package com.tripaneer.catalog.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "destination")
-public class Destination {
+@Document(collection = "category")
+public class Category {
 
     @Id
     private String id;
     private String name;
+    @Indexed(unique=true)
     private String slug;
-    private String parentSlug;
 }

@@ -2,21 +2,17 @@ package com.tripaneer.catalog.service.impl;
 
 import com.tripaneer.catalog.dto.CategoryDTO;
 import com.tripaneer.catalog.dto.DestinationDTO;
-import com.tripaneer.catalog.model.Destination;
-import com.tripaneer.catalog.model.Listing;
-import com.tripaneer.catalog.dto.ListingDTO;
+import com.tripaneer.catalog.domain.Destination;
+import com.tripaneer.catalog.domain.Listing;
 import com.tripaneer.catalog.repository.DestinationRepository;
-import com.tripaneer.catalog.repository.ListingRepository;
 import com.tripaneer.catalog.response.DestinationResponse;
 import com.tripaneer.catalog.service.CategoryService;
 import com.tripaneer.catalog.service.DestinationService;
 import com.tripaneer.catalog.service.ListingService;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -46,7 +42,7 @@ public class DestinationServiceImpl implements DestinationService {
     @Override
     public DestinationResponse getDestination(String destinationKey) {
         return DestinationResponse.builder()
-                .listings(listingService.getListingDTO(destinationKey))
+                .listings(listingService.getListingDTOByDestination(destinationKey))
                 .subDestinations(getSubDestinations(destinationKey))
                 .categories(getCategories(destinationKey))
                 .build();
@@ -70,7 +66,7 @@ public class DestinationServiceImpl implements DestinationService {
 
     private List<CategoryDTO> getCategories(String destinationKey) {
         List<String> categorySlugList = new ArrayList<>();
-        List<Listing> listings = listingService.getListing(destinationKey);
+        List<Listing> listings = listingService.getListingByDestination(destinationKey);
         listings.stream()
                 .map(Listing::getTaggedCategories)
                 .filter(Objects::nonNull).forEach(categorySlugList::addAll);
