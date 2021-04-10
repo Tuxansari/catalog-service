@@ -32,4 +32,12 @@ public class Listing {
 
     @Field(name = "tagged_destinations")
     private List<String> taggedDestinations;
+
+    public Listing(String title, String slug, Double priceEuro, List<String> taggedCategories, List<String> taggedDestinations) {
+        this.title = title;
+        this.slug = slug;
+        this.priceEuro = priceEuro;
+        this.taggedCategories = taggedCategories;
+        this.taggedDestinations = taggedDestinations;
+    }
 }

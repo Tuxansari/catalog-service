@@ -18,4 +18,10 @@ public class Category {
     private String name;
     @Indexed(unique=true)
     private String slug;
+
+    public Category(String name, String slug) {
+        this.name = name;
+        this.slug = slug;
+    }
+
 }

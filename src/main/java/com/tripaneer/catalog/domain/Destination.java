@@ -24,4 +24,10 @@ public class Destination {
 
     @Field(name = "parent_slug")
     private String parentSlug;
+
+    public Destination(String name, String slug, String parentSlug) {
+        this.name = name;
+        this.slug = slug;
+        this.parentSlug = parentSlug;
+    }
 }

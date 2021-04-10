@@ -68,6 +68,7 @@ public class DestinationServiceImpl implements DestinationService {
         List<String> categorySlugList = new ArrayList<>();
         List<Listing> listings = listingService.getListingByDestination(destinationKey);
         listings.stream()
+                .limit(10)
                 .map(Listing::getTaggedCategories)
                 .filter(Objects::nonNull).forEach(categorySlugList::addAll);
         return categoryService.getCategoryDetails(categorySlugList);

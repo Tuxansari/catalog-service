@@ -28,13 +28,16 @@ public class ListingServiceImpl implements ListingService {
     public List<ListingDTO> getListingDTOByCategory(String categoryKey) {
         return listingRepository.findAllByCategoryKey(categoryKey)
                 .stream()
+                .limit(10)
                 .map(this::convertToListingDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<ListingDTO> getListingDTOByDestination(String destinationKey) {
-        return getListingByDestination(destinationKey).stream()
+        return getListingByDestination(destinationKey)
+                .stream()
+                .limit(10)
                 .map(this::convertToListingDTO)
                 .collect(Collectors.toList());
     }
