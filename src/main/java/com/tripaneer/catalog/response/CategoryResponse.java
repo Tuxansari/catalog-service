@@ -1,7 +1,6 @@
 package com.tripaneer.catalog.response;
 
 import com.tripaneer.catalog.dto.CategoryDTO;
-import com.tripaneer.catalog.dto.DestinationDTO;
 import com.tripaneer.catalog.dto.ListingDTO;
 import lombok.Builder;
 import lombok.Data;

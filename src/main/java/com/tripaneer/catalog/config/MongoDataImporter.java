@@ -11,14 +11,17 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;
 
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 @Configuration
-public class ApplicationConfiguration {
+public class MongoDataImporter {
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -33,9 +36,9 @@ public class ApplicationConfiguration {
     public void buildCategory() {
         System.out.println("Building Categories");
         try {
-            InputStream inputStream = ApplicationConfiguration.class.getResourceAsStream("/categories.csv");
+            InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/categories.csv");
             List<String> lines = readFromInputStream(inputStream);
-            for (int i=1;i<lines.size();i++) {
+            for (int i = 1 ; i < lines.size() ; i++) {
                 String[] split = lines.get(i).split(",");
                 String title = split[0];
                 String slug = split[1];
@@ -51,9 +54,9 @@ public class ApplicationConfiguration {
     public void buildDestination() {
         System.out.println("Building Destinations");
         try {
-            InputStream inputStream = ApplicationConfiguration.class.getResourceAsStream("/destinations.csv");
+            InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/destinations.csv");
             List<String> lines = readFromInputStream(inputStream);
-            for (int i=1;i<lines.size();i++) {
+            for (int i = 1 ; i < lines.size() ; i++) {
                 String[] split = lines.get(i).split(",");
                 String name = split[0];
                 String slug = split[1];
@@ -73,9 +76,9 @@ public class ApplicationConfiguration {
     public void buildListing() {
         System.out.println("Building Listing");
         try {
-            InputStream inputStream = ApplicationConfiguration.class.getResourceAsStream("/listing.csv");
+            InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/listing.csv");
             List<String> lines = readFromInputStream(inputStream);
-            for (int i=1;i<lines.size();i++) {
+            for (int i = 1; i < lines.size(); i++) {
                 String[] split = lines.get(i).split(",");
                 String title = split[0];
                 String slug = split[1];
@@ -92,7 +95,7 @@ public class ApplicationConfiguration {
 
     private List<String> getDestList(String[] split) {
         List<String> destList = new ArrayList<>();
-        for (int i=4;i<split.length;i++) {
+        for (int i = 4 ; i < split.length ; i++) {
             destList.add(split[i]);
         }
         return destList;
@@ -101,8 +104,7 @@ public class ApplicationConfiguration {
     private List<String> readFromInputStream(InputStream inputStream)
             throws IOException {
         List<String> output = new ArrayList<>();
-        try (BufferedReader br
-                     = new BufferedReader(new InputStreamReader(inputStream))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
                 output.add(line);

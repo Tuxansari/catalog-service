@@ -21,7 +21,7 @@ public class Listing {
 
     private String title;
 
-    @Indexed(unique=true)
+    @Indexed(unique = true)
     private String slug;
 
     @Field(name = "price_euro")

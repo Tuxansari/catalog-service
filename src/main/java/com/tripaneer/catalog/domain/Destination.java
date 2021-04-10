@@ -19,7 +19,7 @@ public class Destination {
 
     private String name;
 
-    @Indexed(unique=true)
+    @Indexed(unique = true)
     private String slug;
 
     @Field(name = "parent_slug")

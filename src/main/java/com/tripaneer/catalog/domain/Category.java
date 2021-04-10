@@ -16,7 +16,7 @@ public class Category {
     @Id
     private String id;
     private String name;
-    @Indexed(unique=true)
+    @Indexed(unique = true)
     private String slug;
 
     public Category(String name, String slug) {

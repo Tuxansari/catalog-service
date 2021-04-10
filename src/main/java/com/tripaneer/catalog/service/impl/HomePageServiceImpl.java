@@ -6,11 +6,9 @@ import com.tripaneer.catalog.response.HomePageResponse;
 import com.tripaneer.catalog.service.CategoryService;
 import com.tripaneer.catalog.service.DestinationService;
 import com.tripaneer.catalog.service.HomePageService;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.Destination;
 import java.util.List;
 
 @Service

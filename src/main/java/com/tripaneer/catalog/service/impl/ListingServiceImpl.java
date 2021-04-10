@@ -5,7 +5,6 @@ import com.tripaneer.catalog.domain.Listing;
 import com.tripaneer.catalog.repository.ListingRepository;
 import com.tripaneer.catalog.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
