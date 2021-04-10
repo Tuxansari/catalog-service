@@ -13,4 +13,9 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getTopCategories() {
         return Collections.emptyList();
     }
+
+    @Override
+    public List<Category> getCategoryDetails(List<String> categorySlugList) {
+        return null;
+    }
 }

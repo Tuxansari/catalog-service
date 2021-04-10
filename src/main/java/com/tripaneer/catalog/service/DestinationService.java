@@ -1,13 +1,13 @@
 package com.tripaneer.catalog.service;
 
+import com.tripaneer.catalog.dto.DestinationDTO;
 import com.tripaneer.catalog.response.DestinationResponse;
-import reactor.core.publisher.Mono;
 
-import javax.print.attribute.standard.Destination;
 import java.util.List;
 
-public interface DestinationService {
-    List<Destination> getTopDestination();
 
-    Mono<DestinationResponse> getDestination(String destinationKey);
+public interface DestinationService {
+    List<DestinationDTO> getTopDestination();
+
+    DestinationResponse getDestination(String destinationKey);
 }

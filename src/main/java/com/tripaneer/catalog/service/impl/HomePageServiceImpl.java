@@ -7,7 +7,6 @@ import com.tripaneer.catalog.service.HomePageService;
 import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
 
 import javax.print.attribute.standard.Destination;
 import java.util.List;
@@ -22,14 +21,14 @@ public class HomePageServiceImpl implements HomePageService {
     private DestinationService destinationService;
 
     @Override
-    public Mono<HomePageResponse> buildHomePage() {
+    public HomePageResponse buildHomePage() {
 
         List<Category> topCategories = categoryService.getTopCategories();
         List<Destination> topDestinations = destinationService.getTopDestination();
-        return Mono.just(HomePageResponse.builder()
+        return HomePageResponse.builder()
                 .categoryList(topCategories)
                 .destinationList(topDestinations)
-                .build());
+                .build();
     }
 
 }

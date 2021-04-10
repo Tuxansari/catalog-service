@@ -5,7 +5,6 @@ import com.tripaneer.catalog.service.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 @RestController
 public class HomePageController {
@@ -14,7 +13,7 @@ public class HomePageController {
     private HomePageService homePageService;
 
     @GetMapping("/homepage")
-    public Mono<HomePageResponse> getAllTweets() {
+    public HomePageResponse getAllTweets() {
         return homePageService.buildHomePage();
     }
 }
