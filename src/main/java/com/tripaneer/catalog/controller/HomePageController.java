@@ -13,7 +13,7 @@ public class HomePageController {
     @Autowired
     private HomePageService homePageService;
 
-    @GetMapping("/getHomePage")
+    @GetMapping("/homepage")
     public Mono<HomePageResponse> getAllTweets() {
         return homePageService.buildHomePage();
     }
