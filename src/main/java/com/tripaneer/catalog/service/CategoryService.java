@@ -1,12 +1,12 @@
 package com.tripaneer.catalog.service;
 
-import jdk.jfr.Category;
+import com.tripaneer.catalog.dto.CategoryDTO;
 
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> getTopCategories();
+    List<CategoryDTO> getTopCategories();
 
-    List<Category> getCategoryDetails(List<String> categorySlugList);
+    List<CategoryDTO> getCategoryDetails(List<String> categorySlugList);
 
 }

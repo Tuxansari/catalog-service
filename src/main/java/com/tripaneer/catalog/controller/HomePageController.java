@@ -13,7 +13,7 @@ public class HomePageController {
     private HomePageService homePageService;
 
     @GetMapping("/homepage")
-    public HomePageResponse getAllTweets() {
+    public HomePageResponse getHomePage() {
         return homePageService.buildHomePage();
     }
 }

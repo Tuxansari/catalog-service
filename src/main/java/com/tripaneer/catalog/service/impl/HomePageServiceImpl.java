@@ -1,5 +1,7 @@
 package com.tripaneer.catalog.service.impl;
 
+import com.tripaneer.catalog.dto.CategoryDTO;
+import com.tripaneer.catalog.dto.DestinationDTO;
 import com.tripaneer.catalog.response.HomePageResponse;
 import com.tripaneer.catalog.service.CategoryService;
 import com.tripaneer.catalog.service.DestinationService;
@@ -23,8 +25,8 @@ public class HomePageServiceImpl implements HomePageService {
     @Override
     public HomePageResponse buildHomePage() {
 
-        List<Category> topCategories = categoryService.getTopCategories();
-        List<Destination> topDestinations = destinationService.getTopDestination();
+        List<CategoryDTO> topCategories = categoryService.getTopCategories();
+        List<DestinationDTO> topDestinations = destinationService.getTopDestination();
         return HomePageResponse.builder()
                 .categoryList(topCategories)
                 .destinationList(topDestinations)

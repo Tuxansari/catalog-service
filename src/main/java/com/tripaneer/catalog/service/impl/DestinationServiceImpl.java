@@ -1,5 +1,6 @@
 package com.tripaneer.catalog.service.impl;
 
+import com.tripaneer.catalog.dto.CategoryDTO;
 import com.tripaneer.catalog.dto.DestinationDTO;
 import com.tripaneer.catalog.model.Destination;
 import com.tripaneer.catalog.model.Listing;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,7 +35,12 @@ public class DestinationServiceImpl implements DestinationService {
 
     @Override
     public List<DestinationDTO> getTopDestination() {
-        return Collections.emptyList();
+        return destinationRepository
+                .findAll()
+                .stream()
+                .limit(10)
+                .map(this::convertToDestinationDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -61,10 +68,12 @@ public class DestinationServiceImpl implements DestinationService {
                 .build();
     }
 
-    private List<Category> getCategories(String destinationKey) {
+    private List<CategoryDTO> getCategories(String destinationKey) {
         List<String> categorySlugList = new ArrayList<>();
         List<Listing> listings = listingService.getListing(destinationKey);
-        listings.forEach(value -> categorySlugList.addAll(value.getTaggedCategories()));
+        listings.stream()
+                .map(Listing::getTaggedCategories)
+                .filter(Objects::nonNull).forEach(categorySlugList::addAll);
         return categoryService.getCategoryDetails(categorySlugList);
     }
 }
