@@ -1,0 +1,43 @@
+spring:
+    data:
+        mongodb:
+            uri: mongodb://localhost:27017/catalog_db
+
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        web:
+            base-path: /
+            exposure:
+                include: health,info,metrics
+    metrics:
+        export:
+            influx:
+                auto-create-db: true
+                batch-size: 10000
+                compressed: true
+                connect-timeout: 1s
+                consistency: 'one'
+                db: catalog_db
+                enabled: true
+                num-threads: 2
+                password: admin
+                read-timeout: 10s
+                step: 1s
+                uri: http://localhost:8086
+                user-name: admin
+
+server:
+    port: 8081
+    tomcat:
+        accept-count: 100
+        accesslog:
+            enabled: true
+            pattern: '%h %l %u %I %t "%r" %s %b (%D ms)'
+            prefix: catalog-log
+        basedir: log
+        max-connections: 1000
+        max-threads: 300
+        min-spare-threads: 50

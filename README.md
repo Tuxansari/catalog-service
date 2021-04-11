@@ -5,6 +5,8 @@ This service is responsible for service catalog queries.
 ## Getting Started ##
 https://fameoflight.atlassian.net/wiki/spaces/CS/pages/65542/Assignment+-+Landing+Page
 
+Swagger Link : http://localhost:8081/swagger-ui.html
+
 ### Prerequisites ####
 * Java 11
 * Maven
@@ -25,7 +27,7 @@ You can now bring up the service by following steps mentioned.
 
 ## Dashboards
 
-* Chronograf : [Grafana Link](http://localhost:8888/sources/1/dashboards/9?refresh=10s&lower=now%28%29%20-%2015m#)
+* Chronograf : [Chronograf Link](http://localhost:8888/sources/1/dashboards/9?refresh=10s&lower=now%28%29%20-%2015m#)
 
 ##Run on local
 In order to run this application we need following stack :-
