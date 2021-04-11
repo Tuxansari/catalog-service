@@ -6,7 +6,8 @@ This service is responsible for service catalog queries.
 https://fameoflight.atlassian.net/wiki/spaces/CS/pages/65542/Assignment+-+Landing+Page
 
 Swagger Link : http://localhost:8081/swagger-ui.html
-
+Service Info : http://localhost:8081/info
+Service Health : http://localhost:8081/health
 ### Prerequisites ####
 * Java 11
 * Maven
