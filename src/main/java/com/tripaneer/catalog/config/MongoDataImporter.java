@@ -36,6 +36,7 @@ public class MongoDataImporter {
     public void buildCategory() {
         System.out.println("Building Categories");
         try {
+            categoryRepository.deleteAll();
             InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/categories.csv");
             List<String> lines = readFromInputStream(inputStream);
             for (int i = 1 ; i < lines.size() ; i++) {
@@ -54,6 +55,7 @@ public class MongoDataImporter {
     public void buildDestination() {
         System.out.println("Building Destinations");
         try {
+            destinationRepository.deleteAll();
             InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/destinations.csv");
             List<String> lines = readFromInputStream(inputStream);
             for (int i = 1 ; i < lines.size() ; i++) {
@@ -76,6 +78,7 @@ public class MongoDataImporter {
     public void buildListing() {
         System.out.println("Building Listing");
         try {
+            listingRepository.deleteAll();
             InputStream inputStream = MongoDataImporter.class.getResourceAsStream("/listing.csv");
             List<String> lines = readFromInputStream(inputStream);
             for (int i = 1; i < lines.size(); i++) {
