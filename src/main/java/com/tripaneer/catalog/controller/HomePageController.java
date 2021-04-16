@@ -16,4 +16,13 @@ public class HomePageController {
     public HomePageResponse getHomePage() {
         return homePageService.getHomePage();
     }
+
+    /*
+    http://localhost:8081/health
+    http://localhost:8081/destination/magna-finibus-velit-integer
+    http://localhost:8081/category/accumsan-aliquam
+    http://localhost:8081/homepage
+    https://fameoflight.atlassian.net/wiki/spaces/CS/pages/65542/Assignment+-+Landing+Page
+    http://localhost:8888/sources/1/dashboards/9?refresh=5s&lower=now%28%29%20-%205m
+     */
 }
